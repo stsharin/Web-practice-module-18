@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1>My List</h1>
+        <ul id="myList">
+            <li id="first" class="item">Lorem, ipsum dolor.</li>
+            <li class="item">Assumenda, cumque distinctio.</li>
+            <li class="item">Ex, recusandae cum.</li>
+            <li class="item">Eum, officia laboriosam?</li>
+            <li class="item">Exercitationem, natus magni.</li>
+        </ul>
+        <button id="addNew">Add new item</button>
+    </div>
+    <script>
+        var items = document.getElementsByClassName("item");
+        for (let i = 0; i < items.length; i++) {
+            var item = items[i];
+            // console.log(item);
+            item.addEventListener("click", function(event) {
+                // console.log(this, event.target.innerText);
+                event.target.parentNode.removeChild(event.target);
+            })
+        }
+        document.getElementById("addNew").addEventListener("click", function(event){
+            var itemParent = document.getElementById("myList");
+            var newItem = document.createElement("li");
+            newItem.innerText = "Brand new item";
+            itemParent.appendChild(newItem);
+        })
+
+        /* document.getElementById("first")
+             .addEventListener("click", function(count) {
+                 console.log("first item clicked");
+                 // stop Propagating event bubble
+                 event.stopPropagation();
+                 // event.stopImmediatePropagation();
+             })  */
+
+         document.getElementById("myList")
+             .addEventListener("click", function(count) {
+                 console.log(this, event.target);
+                 event.target.parentNode.removeChild(event.target);
+             })
+
+         /* document.getElementById("container")
+             .addEventListener("click", function(count) {
+                 console.log("container clicked");
+             }) */
+    </script>
+</body>
+
+</html>
